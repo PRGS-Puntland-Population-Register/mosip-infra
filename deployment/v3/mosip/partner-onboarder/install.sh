@@ -43,27 +43,29 @@ function installing_onboarder() {
     sed -i 's/\r$//' copy_secrets.sh
     ./copy_secrets.sh
 
-    read -p "Provide onboarder bucket name : " s3_bucket
-    if [[ -z $s3_bucket ]]; then
-      echo "s3_bucket not provided; EXITING;";
-      exit 1;
-    fi
-    if [[ $s3_bucket == *[' !@#$%^&*()+']* ]]; then
-      echo "s3_bucket should not contain spaces / any special character; EXITING";
-      exit 1;
-    fi
-    read -p "Provide onboarder s3 bucket region : " s3_region
-    if [[ $s3_region == *[' !@#$%^&*()+']* ]]; then
-      echo "s3_region should not contain spaces / any special character; EXITING";
-      exit 1;
-    fi
-
-    read -p "Provide S3 URL : " s3_url
-    if [[ -z $s3_url ]]; then
-      echo "s3_url not provided; EXITING;"
-      exit 1;
-    fi
-
+#    read -p "Provide onboarder bucket name : " s3_bucket
+#    if [[ -z $s3_bucket ]]; then
+#      echo "s3_bucket not provided; EXITING;";
+#      exit 1;
+#    fi
+#    if [[ $s3_bucket == *[' !@#$%^&*()+']* ]]; then
+#      echo "s3_bucket should not contain spaces / any special character; EXITING";
+#      exit 1;
+#    fi
+#    read -p "Provide onboarder s3 bucket region : " s3_region
+#    if [[ $s3_region == *[' !@#$%^&*()+']* ]]; then
+#      echo "s3_region should not contain spaces / any special character; EXITING";
+#      exit 1;
+#    fi
+#
+#    read -p "Provide S3 URL : " s3_url
+#    if [[ -z $s3_url ]]; then
+#      echo "s3_url not provided; EXITING;"
+#      exit 1;
+#    fi
+    s3_bucket="mosip-bio-data-av1"   
+    s3_region="eu-west-1"
+    s3_url="https://mosip-bio-data-av1.s3.eu-west-1.amazonaws.com"    
     s3_user_key=$( kubectl -n s3 get cm s3 -o json | jq -r '.data."s3-user-key"' )
 
     echo Onboarding default partners

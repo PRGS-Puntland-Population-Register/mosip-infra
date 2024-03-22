@@ -28,12 +28,12 @@ serviceDiscovery:
   enabled: true
 
 resources:
-  limits: {}
-  #   cpu: 250m
-  #   memory: 1Gi
+  limits:
+     cpu: 250m
+     memory: 1Gi
   requests:
     cpu: 200m
-    memory: 1000Mi
+    memory: 256Mi
 
 rbac:
   create: true

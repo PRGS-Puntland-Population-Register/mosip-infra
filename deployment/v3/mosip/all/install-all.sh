@@ -8,7 +8,7 @@ if [ $# -ge 1 ] ; then
 fi
 
 function installing_all() {
-  ROOT_DIR=`pwd`/../
+  ROOT_DIR=`pwd`/../ 
 
   declare -a module=("conf-secrets"
                      "config-server"
