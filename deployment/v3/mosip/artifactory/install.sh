@@ -9,16 +9,20 @@ fi
 NS=artifactory
 CHART_VERSION=12.0.1
 
-echo Create $NS namespace
-kubectl create ns $NS 
+#echo Create $NS namespace
+#kubectl create ns $NS 
 
 function installing_artifactory() {
   echo Istio label
-  kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+ # kubectl label ns $NS istio-injection=enabled --overwrite
+#  helm repo update
 
   echo Installing artifactory
-  helm -n $NS install artifactory mosip/artifactory --version $CHART_VERSION
+  helm -n $NS upgrade artifactory mosip/artifactory --version $CHART_VERSION \
+    --set image.registry=767397757018.dkr.ecr.eu-west-1.amazonaws.com \
+    --set image.repository=mosip/artifactory-server \
+    --set image.tag=2 
+    
 
   kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 
