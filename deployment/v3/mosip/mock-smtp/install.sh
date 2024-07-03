@@ -18,7 +18,7 @@ function mock_smtp() {
   # helm repo update
 
   echo "Copy configmaps"
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   SMTP_HOST=$(kubectl get cm global -o jsonpath={.data.mosip-smtp-host})

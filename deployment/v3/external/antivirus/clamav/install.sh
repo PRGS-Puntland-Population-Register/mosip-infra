@@ -7,19 +7,20 @@ if [ $# -ge 1 ] ; then
 fi
 
 NS=clamav
-CHART_VERSION=2.4.1
+CHART_VERSION=2.8.3
 
-echo Create $NS namespace
-kubectl create ns $NS 
+#echo Create $NS namespace
+#kubectl create ns $NS 
 
 function installing_Clamav() {
   echo Istio label
-  kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo add wiremind https://wiremind.github.io/wiremind-helm-charts
-  helm repo update
+#  kubectl label ns $NS istio-injection=enabled --overwrite
+#  helm repo add wiremind https://wiremind.github.io/wiremind-helm-charts
+#  helm repo update
 
   echo Installing Clamav
   helm -n $NS install clamav wiremind/clamav -f values.yaml --version $CHART_VERSION
+#  helm -n $NS install clamav mosip/clamav -f values.yaml --version 12.0.2
 
   echo ClamAV installed sucessfully
   return 0

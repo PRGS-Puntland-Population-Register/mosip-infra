@@ -15,10 +15,10 @@ kubectl create ns $NS
 function installing_regproc() {
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   echo Running regproc-salt job
@@ -67,7 +67,7 @@ function installing_regproc() {
   helm -n $NS install regproc-reprocess mosip/regproc-reprocess --version $CHART_VERSION
 
   echo Installing regproc-landingzone
-  helm -n $NS install regproc-landingzone mosip/regproc-landingzone --version $CHART_VERSION
+  helm -n $NS install regproc-landingzone mosip/regproc-landingzone --version 12.0.2
 
   kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
   echo Intalled regproc services

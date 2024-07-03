@@ -25,6 +25,7 @@ CHART_VERSION=12.0.1
 
 echo Create $NS namespace
 kubectl create ns $NS
+kubectl apply -f partner-onboarder-clusterrole.yaml
 
 function installing_onboarder() {
 
@@ -32,15 +33,15 @@ function installing_onboarder() {
   if [ $yn = "Y" ]; then
     echo Istio label
     kubectl label ns $NS istio-injection=disabled --overwrite
-    helm repo update
+#    helm repo update
 
     echo Copy configmaps
     kubectl -n $NS --ignore-not-found=true delete cm s3
-    sed -i 's/\r$//' copy_cm.sh
+#    sed -i 's/\r$//' copy_cm.sh
     ./copy_cm.sh
 
     echo Copy secrets
-    sed -i 's/\r$//' copy_secrets.sh
+#    sed -i 's/\r$//' copy_secrets.sh
     ./copy_secrets.sh
 
 #    read -p "Provide onboarder bucket name : " s3_bucket

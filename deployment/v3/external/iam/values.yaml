@@ -25,12 +25,12 @@ replicaCount: 1
 
 # Enable if replicaCount > 1
 serviceDiscovery:
-  enabled: true
+  enabled: false
 
 resources:
   limits:
-     cpu: 250m
-     memory: 1Gi
+     cpu: 2
+     memory: 2Gi
   requests:
     cpu: 200m
     memory: 256Mi

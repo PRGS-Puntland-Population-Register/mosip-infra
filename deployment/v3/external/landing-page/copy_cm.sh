@@ -3,7 +3,7 @@
 # DST_NS: Destination namespace 
 
 function copying_cm() {
-  sed -i 's/\r$//' ../../utils/copy_cm_func.sh
+  #sed -i 's/\r$//' ../../utils/copy_cm_func.sh
   COPY_UTIL=../../utils/copy_cm_func.sh
   DST_NS=landing-page
 

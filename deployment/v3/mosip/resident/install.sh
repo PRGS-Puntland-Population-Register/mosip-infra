@@ -16,14 +16,14 @@ kubectl create ns $NS
 function installing_resident() {
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   echo Copy secrets
-  sed -i 's/\r$//' copy_secrets.sh
+#  sed -i 's/\r$//' copy_secrets.sh
   ./copy_secrets.sh
   
   echo Setting up dummy values for Resident OIDC Client ID

@@ -15,7 +15,7 @@ kubectl create ns $NS
 function config_secrets() {
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo "Installing Secrets required by config-server"
   helm -n $NS install conf-secrets mosip/conf-secrets --version $CHART_VERSION --wait

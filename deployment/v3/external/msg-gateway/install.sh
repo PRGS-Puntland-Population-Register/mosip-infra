@@ -15,39 +15,39 @@ function msg_gateway() {
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
 
-  SMTP_HOST=mock-smtp.mock-smtp
-  SMS_HOST=mock-smtp.mock-smtp
-  SMTP_PORT=8025
-  SMS_PORT=8080
-  SMTP_USER=
+  SMTP_HOST=email-smtp.eu-west-1.amazonaws.com
+  SMS_HOST=email-smtp.eu-west-1.amazonaws.com
+  SMTP_PORT=2587
+  SMS_PORT=2587
+  SMTP_USER=AKIA3FLDYQBNJADJLR6G
   SMS_USER=
-  SMTP_SECRET="''"
+  SMTP_SECRET="BGxKVXXFKQnnXiDZU1mM7OFlmyZpP3dyu+d27j2B9S19"
   SMS_SECRET="''"
   SMS_AUTHKEY="authkey"
 
-  read -p "Would you like to use mock-smtp (Y/N) [ Default: Y ] : " yn
-  # Set yn to N if user input is null
-  if [ -z $yn ]; then
-    yn=Y;
-  fi
-  if [ $yn != "Y" ]; then
-      read -p "Please enter the SMTP host " SMTP_HOST
-      read -p "Please enter the SMTP host port " SMTP_PORT
-      read -p "Please enter the SMTP user " SMTP_USER
-      read -p "Please enter the SMTP secret key " SMTP_SECRET
-  fi
-  unset yn
-  read -p "Would you like to use mock-sms (Y/N) [ Default: Y ] : " yn
-  if [ -z $yn ]; then
-    yn=Y;
-  fi
-  if [ $yn != "Y" ]; then
-      read -p "Please enter the SMS host " SMS_HOST
-      read -p "Please enter the SMS host port " SMS_PORT
-      read -p "Please enter the SMS user " SMS_USER
-      read -p "Please enter the SMS secret key " SMS_SECRET
-      read -p "Please enter the SMS auth key " SMS_AUTHKEY
-  fi
+#  read -p "Would you like to use mock-smtp (Y/N) [ Default: Y ] : " yn
+#  # Set yn to N if user input is null
+#  if [ -z $yn ]; then
+#    yn=Y;
+#  fi
+#  if [ $yn != "Y" ]; then
+#      read -p "Please enter the SMTP host " SMTP_HOST
+#      read -p "Please enter the SMTP host port " SMTP_PORT
+#      read -p "Please enter the SMTP user " SMTP_USER
+#      read -p "Please enter the SMTP secret key " SMTP_SECRET
+#  fi
+#  unset yn
+#  read -p "Would you like to use mock-sms (Y/N) [ Default: Y ] : " yn
+#  if [ -z $yn ]; then
+#    yn=Y;
+#  fi
+#  if [ $yn != "Y" ]; then
+#      read -p "Please enter the SMS host " SMS_HOST
+#      read -p "Please enter the SMS host port " SMS_PORT
+#      read -p "Please enter the SMS user " SMS_USER
+#      read -p "Please enter the SMS secret key " SMS_SECRET
+#      read -p "Please enter the SMS auth key " SMS_AUTHKEY
+#  fi
   kubectl -n $NS delete --ignore-not-found=true configmap msg-gateway
   kubectl -n $NS create configmap msg-gateway --from-literal="smtp-host=$SMTP_HOST" --from-literal="sms-host=$SMS_HOST" --from-literal="smtp-port=$SMTP_PORT" --from-literal="sms-port=$SMS_PORT" --from-literal="smtp-username=$SMTP_USER" --from-literal="sms-username=$SMS_USER"
   kubectl -n $NS delete --ignore-not-found=true secret msg-gateway

@@ -28,7 +28,7 @@ function installing_all() {
   cd $ROOT_DIR/object-store
   ./cred.sh
 
-  cd $ROOT_DIR/antivirus/clamav
+  cd $ROOT_DIR/antivirus/clamav # <-- skipped
   ./install.sh
 
   cd $ROOT_DIR/activemq
@@ -44,10 +44,10 @@ function installing_all() {
   cd $ROOT_DIR/msg-gateway
   ./install.sh
 
-  cd $ROOT_DIR/docker-secrets
+  cd $ROOT_DIR/docker-secrets  
   ./install.sh
 
-  cd $ROOT_DIR/conf-secrets
+  cd $ROOT_DIR/conf-secrets   # <---- spostato in mosip mi sa
   ./install.sh
 
   cd $ROOT_DIR/landing-page

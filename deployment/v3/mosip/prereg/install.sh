@@ -17,10 +17,10 @@ function installing_prereg() {
   ## TODO: Istio proxy disabled for now as prereui does not come up if
   ## envoy filter container gets installed after prereg container.
   kubectl label ns $NS istio-injection=disabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   API_HOST=`kubectl get cm global -o jsonpath={.data.mosip-api-host}`

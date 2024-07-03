@@ -16,10 +16,10 @@ kubectl create ns $NS
 function installing_mfs() {
   echo Istio label Disabled
   kubectl label ns $NS istio-injection=disabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   FILESERVER_HOST=$(kubectl get cm global -o jsonpath={.data.mosip-api-host})

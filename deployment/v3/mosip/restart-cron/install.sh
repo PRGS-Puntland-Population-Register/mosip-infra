@@ -42,7 +42,7 @@ function installing_restart-cron() {
 
   echo Istio label
   kubectl label ns $NS istio-injection=disabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Installing restart-cron
   helm -n $NS install restart-cron mosip/restart-cron \

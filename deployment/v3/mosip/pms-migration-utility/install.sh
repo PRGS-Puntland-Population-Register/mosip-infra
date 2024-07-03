@@ -15,10 +15,10 @@ kubectl create ns $NS
 function installing_pms_utility() {
   echo Istio label
   kubectl label ns $NS istio-injection=disabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   read -p "Do you want to run pms-migration-utility as cronjob (Y/n) ?" yn

@@ -11,29 +11,29 @@ function installing_all() {
   ROOT_DIR=`pwd`/../ 
 
   declare -a module=("conf-secrets"
-                     "config-server"
+                     "config-server"  # <-- Ho aggiunto `mosip-signup-host: signup.prgs-project.com` alla configmap default/global
                      "artifactory"
-                     "keymanager"
-                     "websub"
-                     "mock-smtp"
-                     "kernel"
-                     "masterdata-loader"
-                     "biosdk"
-                     "packetmanager"
-                     "datashare"
-                     "prereg"
-                     "idrepo"
-                     "pms"
-                     "mock-abis"
-                     "mock-mv"
-                     "regproc"
-                     "admin"
-                     "ida"
-                     "print"
-                     "partner-onboarder"
+                     "keymanager"  
+                     "websub"       
+                     "mock-smtp"          
+                     "kernel"               
+                     "masterdata-loader"    
+                     "biosdk"             
+                     "packetmanager"      
+                     "datashare"      
+                     "prereg"         
+                     "idrepo"         
+                     "pms"          # <-- mi da not found quando vado a daprire il sito pmp=ui
+                     "mock-abis"    
+                     "mock-mv"      
+                     "regproc"      
+                     "admin"      
+                     "ida"          
+                     "print"              
+                     "partner-onboarder"    # <-- mimoto ok, gli altri job sono mezzi in errore in realtà 
                      "mosip-file-server"
-                     "resident"
-                     "regclient"
+                     "resident"             
+                     "regclient"        # <-- funziona solo con OpsnEELv1.1.1q: `brew install openssl@1.1 & export PATH="$(brew --prefix)/opt/openssl@1.1/bin:$PATH"` 
                      )
 
   echo Installing MOSIP services

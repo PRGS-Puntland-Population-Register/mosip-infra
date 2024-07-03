@@ -18,10 +18,10 @@ kubectl create ns $NS
 function installing_pms() {
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   INTERNAL_API_HOST=$(kubectl get cm global -o jsonpath={.data.mosip-api-internal-host})

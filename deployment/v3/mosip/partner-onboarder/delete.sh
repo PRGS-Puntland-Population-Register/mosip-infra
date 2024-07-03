@@ -16,6 +16,34 @@ function deleting_onboarder() {
         break
       fi
   done
+  
+  echo "   === SQL CLEANUP ==="
+  echo "DELETE FROM auth_policy WHERE name = 'mpolicy-default-mimotokeybinding';"
+  echo "DELETE FROM auth_policy WHERE name = 'mpolicy-default-resident-oidc';"
+  echo "DELETE FROM auth_policy WHERE name = 'mpolicy-default-demo-oidc Policy';"
+  echo "DELETE FROM auth_policy WHERE name = 'mpolicy-default-esignet Policy';"
+  
+  echo "DELETE FROM auth_policy_h WHERE name = 'mpolicy-default-mimotokeybinding';"
+  echo "DELETE FROM auth_policy_h WHERE name = 'mpolicy-default-resident-oidc';"
+  echo "DELETE FROM auth_policy_h WHERE name = 'mpolicy-default-demo-oidc Policy';"
+  echo "DELETE FROM auth_policy_h WHERE name = 'mpolicy-default-esignet Policy';"
+  
+  echo "DELETE FROM partner WHERE id = 'mpartner-default-resident-oidc';"
+  echo "DELETE FROM partner WHERE id = 'mpartner-default-demo-oidc';"
+  echo "DELETE FROM partner WHERE id = 'mpartner-default-mimotokeybinding';"
+  echo "DELETE FROM partner WHERE id = 'mpartner-default-esignet';"
+  
+  echo "DELETE FROM partner_h WHERE user_id = 'mpartner-default-resident-oidc';"
+  echo "DELETE FROM partner_h WHERE user_id = 'mpartner-default-demo-oidc';"
+  echo "DELETE FROM partner_h WHERE user_id = 'mpartner-default-mimotokeybinding';"
+  echo "DELETE FROM partner_h WHERE user_id = 'mpartner-default-esignet';"
+  
+  echo "DELETE FROM policy_group WHERE user_id = 'mpartner-default-resident-oidc';"
+  echo "DELETE FROM policy_group WHERE user_id = 'mpartner-default-demo-oidc';"
+  echo "DELETE FROM policy_group WHERE user_id = 'mpartner-default-mimotokeybinding';"
+  echo "DELETE FROM policy_group WHERE user_id = 'mpartner-default-esignet';"
+  echo "   === SQL CLEANUP ==="
+  
   return 0
 }
 

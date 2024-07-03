@@ -18,7 +18,7 @@ function landing_page() {
   helm repo update
 
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   VERSION=`git branch | grep "\*" | cut -d ' ' -f 2`

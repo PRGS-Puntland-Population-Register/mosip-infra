@@ -14,12 +14,12 @@ kubectl create ns $NS
 
 function installing_mockmv() {
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Installing mock-mv
   helm -n $NS install mock-mv mosip/mock-mv --version $CHART_VERSION

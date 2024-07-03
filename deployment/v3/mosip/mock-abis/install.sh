@@ -14,15 +14,15 @@ kubectl create ns $NS
 
 function installing_abis() {
   echo Copy configmaps
-  sed -i 's/\r$//' copy_cm.sh
+#  sed -i 's/\r$//' copy_cm.sh
   ./copy_cm.sh
 
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
-  helm repo update
+#  helm repo update
 
   echo Installing mock-abis
-  helm -n $NS install mock-abis mosip/mock-abis --version $CHART_VERSION
+  helm -n $NS install mock-abis mosip/mock-abis --version $CHART_VERSION -f values.yaml
 
   kubectl -n $NS  get deploy -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 
